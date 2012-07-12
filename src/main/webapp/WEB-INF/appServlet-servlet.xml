@@ -3,6 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:mvc="http://www.springframework.org/schema/mvc"
     xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:p="http://www.springframework.org/schema/p"
     xsi:schemaLocation="
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
@@ -12,18 +13,61 @@
  
     <!-- Scans within the base package of the application for @Components to configure as beans -->
     <!-- @Controller, @Service, @Configuration, etc. -->
-    <context:component-scan base-package="com.sony.np" />
- 
+    <context:component-scan base-package="com.jphat" />
+<context:annotation-config />
+	 
     <!-- Enables the Spring MVC @Controller programming model -->
     <mvc:annotation-driven />
     
     <mvc:resources mapping="/resources/**" location="/webapp/resources/" />
-    
+	<mvc:default-servlet-handler />    
     <bean id="viewResolver"
         class="org.springframework.web.servlet.view.UrlBasedViewResolver">
         <property name="viewClass"
             value="org.springframework.web.servlet.view.JstlView" />
-        <property name="prefix" value="/WEB-INF/views/" />
+        <property name="prefix" value="../views/" />
         <property name="suffix" value=".jsp" />
-    </bean> 
+    </bean>
+	<!--bean class="com.jphat.controllers.OwnerController" /-->    
+	<bean class="com.jphat.daos.OwnerDao" >
+        <property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	   
+	<!--bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"-->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+
+        <!-- Hibernate configuration -->
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+                <prop key="hibernate.hbm2ddl.auto">create</prop>
+            </props>
+        </property>
+
+        <!-- The packages that contain our Hibernate model classes -->
+        <property name="packagesToScan">
+            <list>
+                <value>com.jphat.models</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- Hibernate transaction management -->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+     
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close"
+		p:driverClass="org.hsqldb.jdbcDriver"
+		p:jdbcUrl="jdbc:hsqldb:hsql"
+		p:user="sa"
+		p:password=""
+		p:acquireIncrement="5"
+		p:idleConnectionTestPeriod="60"
+		p:maxPoolSize="100"
+		p:maxStatements="50"
+		p:minPoolSize="10" />
+
 </beans>

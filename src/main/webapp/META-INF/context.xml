@@ -1,0 +1,7 @@
+<Context>
+	<!--jdbc:embedded-database id="embeddedDatasource" type="HSQL"/>
+	<jdbc:embedded-database id="dataSource" type="HSQL">
+		<jdbc:script location="classpath:scheme.sql" />
+	</jdbc:embedded-database-->
+
+</Context>

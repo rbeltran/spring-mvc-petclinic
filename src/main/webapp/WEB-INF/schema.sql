@@ -1,0 +1,14 @@
+CREATE TABLE Person (
+	id INTEGER AS IDENTITY,
+	firstName VARCHAR(25) NOT NULL,
+	lastName VARCHAR(25) NOT NULL,
+	PRIMARY KEY (id)
+)
+
+CREATE TABLE Owner (
+	id INTEGER,
+	address VARCHAR(25),
+	city VARCHAR(25),
+	telephone VARCHAR(25),
+	FOREIGN KEY (id) REFERENCES Person(id)
+)

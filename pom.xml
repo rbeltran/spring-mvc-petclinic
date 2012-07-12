@@ -2,33 +2,49 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.sne.np</groupId>
+	<groupId>com.jphat</groupId>
 	<artifactId>spring-mvc-petclinic</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<description></description>
 	<properties>
-		<spring.version>3.0.4.RELEASE</spring.version>
+		<spring.version>3.1.2.RELEASE</spring.version>
 		<slf4j.version>1.5.6</slf4j.version>
 	</properties>
 	<dependencies>
 
+    <dependency>
+    	<groupId>c3p0</groupId>
+    	<artifactId>c3p0</artifactId>
+    	<version>0.9.1.2</version>
+    	<type>jar</type>
+    	<scope>compile</scope>
+    </dependency>
+<dependency>
+  <groupId>org.hsqldb</groupId>
+  <artifactId>hsqldb</artifactId>
+  <version>2.2.8</version>
+</dependency>
 		<!--  Spring -->
-		<dependency>
+		<!--dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${spring.version}</version>
 			<exclusions>
-				<!-- Exclude Commons Logging in favor of SLF4j -->
 				<exclusion>
 					<groupId>commons-logging</groupId>
 					<artifactId>commons-logging</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
+		</dependency-->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
@@ -115,9 +131,26 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
- 
- 
-		<!-- Test -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.1.4.Final</version>
+		</dependency>        
+		<!--dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-annotations</artifactId>
+			<version>3.5.6-Final</version>
+		</dependency-->
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
+			<version>1.0.1.Final</version>
+		</dependency>		<!-- Test -->
+		<!--dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-hibernate3</artifactId>
+			<version>2.0.8</version>
+		</dependency-->		
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
