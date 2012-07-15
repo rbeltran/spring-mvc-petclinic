@@ -21,7 +21,7 @@ public class OwnerController {
 	@RequestMapping( value="/owner/add", method = RequestMethod.GET )
 	public String addOwner() {
 		log.error( "OwnerController: Passing through" );
-		return "/owner/view";
+		return "/owner/add";
 	}
 	
 	@RequestMapping( value="/owner/find", method = RequestMethod.GET  )
