@@ -31,9 +31,18 @@ public class OwnerController {
 	public String findOwner() {
 		return "/owner/find";
 	}
+	
+	@RequestMapping( value="/owner/view" )
+	public String viewOwner( @ModelAttribute("owner") Owner owner, BindingResult result, Model model ) {
+		model.addAttribute( "owner", owner );
+		return "/owner/viewPage";
+	}
+
 	@RequestMapping( value="/owner/save", method = RequestMethod.POST )
 	public String save( @ModelAttribute("owner") Owner owner, BindingResult result, Model model ) {
-		ownerService.addOwner( owner ); 
-		return "/owner/view/"+owner.getId();
+		ownerService.addOwner( owner );
+		model.addAttribute(owner);
+//		model.addAttribute("owner", owner );
+		return "forward:/owner/view";
 	}
 }
