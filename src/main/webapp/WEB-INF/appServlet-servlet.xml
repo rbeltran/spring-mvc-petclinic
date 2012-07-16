@@ -4,17 +4,19 @@
     xmlns:mvc="http://www.springframework.org/schema/mvc"
     xmlns:context="http://www.springframework.org/schema/context"
     xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:tx="http://www.springframework.org/schema/tx"
     xsi:schemaLocation="
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
  
     <!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
  
+	<context:annotation-config />	 
     <!-- Scans within the base package of the application for @Components to configure as beans -->
     <!-- @Controller, @Service, @Configuration, etc. -->
     <context:component-scan base-package="com.jphat" />
-<context:annotation-config />
 	 
     <!-- Enables the Spring MVC @Controller programming model -->
     <mvc:annotation-driven />
@@ -29,20 +31,22 @@
         <property name="suffix" value=".jsp" />
     </bean>
 	<!--bean class="com.jphat.controllers.OwnerController" /-->    
-	<bean class="com.jphat.daos.OwnerDao" >
+	<!-->bean class="com.jphat.daos.OwnerDao" >
         <property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
+	</bean-->
 	   
 	<!--bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"-->
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-
         <!-- Hibernate configuration -->
         <property name="hibernateProperties">
-            <props>
+			<props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
                 <prop key="hibernate.hbm2ddl.auto">create</prop>
-            </props>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<!--prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop-->            
+			</props>
         </property>
 
         <!-- The packages that contain our Hibernate model classes -->
@@ -53,6 +57,8 @@
         </property>
     </bean>
 
+	<!-- Transaction by annotation -->
+	<tx:annotation-driven />
     <!-- Hibernate transaction management -->
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>

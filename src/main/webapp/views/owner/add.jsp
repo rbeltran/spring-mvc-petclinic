@@ -2,20 +2,20 @@
     <head>
         <title>Add Owner</title>
   	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-		<link rel="stylesheet" href="/grails-petclinic/css/petclinic.css" type="text/css"/>
+		<link rel="stylesheet" href="resources/css/petclinic.css" type="text/css"/>		
     </head>
     <body>
 	   <div id="main">
          
 		<h2>New Owner:</h2>
 
-		<form action="/grails-petclinic/owner/add" method="post" >
+		<form action="/spring-mvc-petclinic/owner/save" method="post" >
 		  <table>
 		    <tr>
 		      <th>
 				First Name: <span class="errors"></span>
 <br/>
-<input type="text" name="owner.firstName" value="" id="owner.firstName" />
+<input type="text" name="firstName" value="" id="owner.firstName" />
 			
 		      </th>
 		    </tr>
@@ -23,7 +23,7 @@
 		      <th>
 				Last Name: <span class="errors"></span>
 <br/>
-<input type="text" name="owner.lastName" value="" id="owner.lastName" />
+<input type="text" name="lastName" value="" id="owner.lastName" />
 
 		      </th>
 		    </tr>
@@ -31,7 +31,7 @@
 		      <th>
 				Address: <span class="errors"></span>
 <br/>
-<input type="text" name="owner.address" value="" id="owner.address" />
+<input type="text" name="address" value="" id="owner.address" />
 
 		      </th>
 		    </tr>
@@ -39,7 +39,7 @@
 		      <th>
 				City: <span class="errors"></span>
 <br/>
-<input type="text" name="owner.city" value="" id="owner.city" />
+<input type="text" name="city" value="" id="owner.city" />
 
 
 		      </th>
@@ -48,7 +48,7 @@
 		      <th>
 				Telephone: <span class="errors"></span>
 <br/>
-<input type="text" name="owner.telephone" value="" id="owner.telephone" />
+<input type="text" name="telephone" value="" id="owner.telephone" />
 
 		      </th>
 		    </tr>
@@ -63,8 +63,8 @@
 
 		 <table class="footer">
 		    <tr>
-		      <td><a href="/grails-petclinic/">Home</a></td>
-		      <td align="right"><img src="/grails-petclinic/images/springsource-logo.png"/></td>
+		      <td><a href="/spring-mvc-petclinic/">Home</a></td>
+		      <td align="right"><img src="resources/images/springsource-logo.png" ></td>
 		    </tr>
 		  </table>
 	   </div>
