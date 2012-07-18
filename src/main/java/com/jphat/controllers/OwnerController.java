@@ -1,6 +1,8 @@
 package com.jphat.controllers;
 
-import org.apache.log4j.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,10 +15,9 @@ import com.jphat.models.Owner;
 import com.jphat.services.OwnerService;
 
 @Controller
-//@RequestMapping( "/owner" )
 public class OwnerController {
 
-	Logger log = Logger.getLogger(OwnerController.class);
+	private Logger log = LoggerFactory.getLogger(OwnerController.class);
 	
 	@Autowired
 	private OwnerService ownerService;
@@ -35,6 +36,7 @@ public class OwnerController {
 	@RequestMapping( value="/owner/view" )
 	public String viewOwner( @ModelAttribute("owner") Owner owner, BindingResult result, Model model ) {
 		model.addAttribute( "owner", owner );
+		model.addAttribute( owner );
 		return "/owner/viewPage";
 	}
 
@@ -42,7 +44,6 @@ public class OwnerController {
 	public String save( @ModelAttribute("owner") Owner owner, BindingResult result, Model model ) {
 		ownerService.addOwner( owner );
 		model.addAttribute(owner);
-//		model.addAttribute("owner", owner );
-		return "forward:/owner/view";
+		return "/owner/viewPage";
 	}
 }

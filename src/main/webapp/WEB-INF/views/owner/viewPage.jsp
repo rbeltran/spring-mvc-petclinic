@@ -2,7 +2,7 @@
     <head>
         <title>Owner Information</title>
   	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-		<link rel="stylesheet" href="resources/css/petclinic.css" type="text/css"/>		
+		<link rel="stylesheet" href="/spring-mvc-petclinic/resources/css/petclinic.css" type="text/css"/>		
     </head>
     <body>
 	   <div id="main">
@@ -12,19 +12,19 @@
 		  <table>
 		    <tr>
 		      <th>Name</th>
-		      <td><b>${owner.firstName} Beltran</b></td>
+		      <td><b>${owner.firstName} ${owner.lastName}</b></td>
 		    </tr>
 		    <tr>
 		      <th>Address</th>
-		      <td>1234 street</td>
+		      <td>${owner.address}</td>
 		    </tr>
 		    <tr>
 		      <th>City</th>
-		      <td>San Diego</td>
+		      <td>${owner.city}</td>
 		    </tr>
 		    <tr>
 		      <th>Telephone </th>
-		      <td>6165551234</td>
+		      <td>${owner.telephone}</td>
 		    </tr>
 		  </table>
 		  <table class="table-buttons">
@@ -52,7 +52,7 @@
 		 <table class="footer">
 		    <tr>
 		      <td><a href="/spring-mvc-petclinic/">Home</a></td>
-		      <td align="right"><img src="resources/images/springsource-logo.png" ></td>
+		      <td align="right"><img src="/spring-mvc-petclinic/resources/images/springsource-logo.png" ></td>
 		    </tr>
 		  </table>
 	   </div>

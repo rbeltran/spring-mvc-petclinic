@@ -21,7 +21,7 @@
     <!-- Enables the Spring MVC @Controller programming model -->
     <mvc:annotation-driven />
     
-    <mvc:resources mapping="/resources/**" location="/webapp/resources/" />
+    <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
 	<mvc:default-servlet-handler />    
     <bean id="viewResolver"  class="org.springframework.web.servlet.view.UrlBasedViewResolver">
         <property name="viewClass"

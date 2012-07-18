@@ -2,7 +2,7 @@
     <head>
         <title>Add Owner</title>
   	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-		<link rel="stylesheet" href="resources/css/petclinic.css" type="text/css"/>		
+		<link rel="stylesheet" href="/spring-mvc-petclinic/resources/css/petclinic.css" type="text/css"/>		
     </head>
     <body>
 	   <div id="main">
@@ -64,7 +64,7 @@
 		 <table class="footer">
 		    <tr>
 		      <td><a href="/spring-mvc-petclinic/">Home</a></td>
-		      <td align="right"><img src="resources/images/springsource-logo.png" ></td>
+		      <td align="right"><img src="/spring-mvc-petclinic/resources/images/springsource-logo.png" ></td>
 		    </tr>
 		  </table>
 	   </div>
